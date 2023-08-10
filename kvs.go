@@ -16,6 +16,11 @@ import (
 	"github.com/aws/aws-sdk-go-v2/service/dynamodb/types"
 )
 
+type KVSClientAPI interface {
+	GetItem(ctx context.Context, key int64) ([]byte, error)
+	PutItem(ctx context.Context, key int64, value interface{}) error
+}
+
 type KVS struct {
 	URL             string
 	AccessKeyID     string
